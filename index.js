@@ -7,7 +7,10 @@ const tree = new Tree(testArr);
 prettyPrint(tree.root);
 
 //console.log(tree);
-console.log(tree.find(4));
-console.log(tree.find(3));
-console.log(tree.find(67));
-console.log(tree.find(667));
+// console.log(tree.find(4));
+// console.log(tree.find(3));
+// console.log(tree.find(67));
+// console.log(tree.find(667));
+tree.insert(14);
+tree.insert(25);
+prettyPrint(tree.root);
