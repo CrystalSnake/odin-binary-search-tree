@@ -18,6 +18,17 @@ class Tree {
       this.buildTree(array.slice(middle + 1))
     );
   }
+
+  find(value, node = this.root) {
+    if (node == null) return null;
+    if (node.data == value) {
+      return node;
+    } else if (node.data > value) {
+      return this.find(value, node.left);
+    } else {
+      return this.find(value, node.right);
+    }
+  }
 }
 
 export default Tree;
