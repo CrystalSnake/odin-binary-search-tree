@@ -2,7 +2,7 @@ import Node from './node.js';
 
 class Tree {
   constructor(array) {
-    this.root = this.buildTree(array);
+    this.root = this.buildTree(this.sortAndRemoveDoubles(array));
   }
 
   sortAndRemoveDoubles(array) {
@@ -10,12 +10,13 @@ class Tree {
   }
 
   buildTree(array) {
-    if (this.sortAndRemoveDoubles(array).length == 0) {
-      return null;
-    } else {
-      const middle = Math.floor(this.sortAndRemoveDoubles(array).length / 2);
-      return this.sortAndRemoveDoubles(array)[middle];
-    }
+    if (array.length == 0) return null;
+    const middle = Math.floor(array.length / 2);
+    return new Node(
+      array[middle],
+      this.buildTree(array.slice(0, middle)),
+      this.buildTree(array.slice(middle + 1))
+    );
   }
 }
 
