@@ -39,6 +39,37 @@ class Tree {
     }
     return node;
   }
+
+  minimal(node) {
+    let minValue = node.data;
+    while (node.left) {
+      minValue = node.left.data;
+      node = node.left;
+    }
+    return minValue;
+  }
+
+  delete(value, node = this.root) {
+    if (node == null) return node;
+    if (value < node.data) {
+      node.left = this.delete(value, node.left);
+    } else if (value > node.data) {
+      node.right = this.delete(value, node.right);
+    } else {
+      if (node.left == null && node.right == null) {
+        return null;
+      } else if (node.left && node.right == null) {
+        return node.left;
+      } else if (node.left == null && node.right) {
+        return node.right;
+      } else {
+        const min = this.minimal(node);
+        this.delete(min, node);
+        node.data = min;
+      }
+    }
+    return node;
+  }
 }
 
 export default Tree;
