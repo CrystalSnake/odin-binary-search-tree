@@ -13,7 +13,15 @@ const tree = new Tree(testArr);
 // console.log(tree.find(667));
 tree.insert(14);
 tree.insert(25);
-prettyPrint(tree.root);
+//prettyPrint(tree.root);
 
-tree.delete(67);
+//tree.delete(67);
 prettyPrint(tree.root);
+console.log(`Tree height is ${tree.height()}.`);
+console.log(`Level order ${tree.levelOrder()}.`);
+
+function double(n) {
+  return n * 2;
+}
+
+console.log(`Level order ${tree.levelOrder(double)}.`);

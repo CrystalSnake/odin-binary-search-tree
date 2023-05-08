@@ -70,6 +70,36 @@ class Tree {
     }
     return node;
   }
+
+  height(node = this.root) {
+    if (node == null) return 0;
+    else {
+      const leftHeight = this.height(node.left);
+      const rightHeight = this.height(node.right);
+      if (leftHeight > rightHeight) return leftHeight + 1;
+      else return rightHeight + 1;
+    }
+  }
+
+  getCurrentLevel(level, node, result) {
+    if (node == null) return;
+    if (level == 1) {
+      result.push(node.data);
+    } else if (level > 1) {
+      this.getCurrentLevel(level - 1, node.left, result);
+      this.getCurrentLevel(level - 1, node.right, result);
+    }
+  }
+
+  levelOrder(callback, node = this.root) {
+    const result = [];
+    const h = this.height(node);
+    for (let i = 1; i <= h; i++) {
+      this.getCurrentLevel(i, node, result);
+    }
+    if (!callback) return result;
+    else return result.map(callback);
+  }
 }
 
 export default Tree;
