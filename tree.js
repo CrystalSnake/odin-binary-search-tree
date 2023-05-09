@@ -153,6 +153,10 @@ class Tree {
       return true;
     else return false;
   }
+
+  rebalance() {
+    this.root = this.buildTree(this.inorder());
+  }
 }
 
 export default Tree;

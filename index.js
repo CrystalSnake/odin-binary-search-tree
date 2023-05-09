@@ -33,3 +33,8 @@ console.log(`Postorder ${tree.postorder()}`);
 console.log(`Postorder ${tree.postorder(double)}`);
 console.log(tree.depth(tree.find(4)));
 console.log(tree.isBalanced());
+tree.insert(11);
+tree.insert(22);
+console.log(tree.isBalanced());
+tree.rebalance();
+console.log(tree.isBalanced());
