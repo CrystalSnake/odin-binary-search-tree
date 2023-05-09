@@ -100,6 +100,16 @@ class Tree {
     if (!callback) return result;
     else return result.map(callback);
   }
+
+  inorder(callback, node = this.root, result = []) {
+    if (node) {
+      this.inorder(callback, node.left, result);
+      result.push(node.data);
+      this.inorder(callback, node.right, result);
+    }
+    if (!callback) return result;
+    else return result.map(callback);
+  }
 }
 
 export default Tree;
