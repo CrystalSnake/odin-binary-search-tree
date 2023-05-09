@@ -140,6 +140,19 @@ class Tree {
       return dist;
     }
   }
+
+  isBalanced(node = this.root) {
+    if (node == null) return true;
+    const lh = this.height(node.left);
+    const rh = this.height(node.right);
+    if (
+      Math.abs(lh - rh) <= 1 &&
+      this.isBalanced(node.left) &&
+      this.isBalanced(node.right)
+    )
+      return true;
+    else return false;
+  }
 }
 
 export default Tree;
