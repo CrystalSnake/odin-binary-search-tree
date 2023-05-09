@@ -127,6 +127,19 @@ class Tree {
     else result.push(callback(node.data));
     return result;
   }
+
+  depth(node, root = this.root) {
+    if (root == null) return -1;
+    else {
+      let dist = -1;
+      if (node == root) return dist + 1;
+      dist = this.depth(node, root.left);
+      if (dist >= 0) return dist + 1;
+      dist = this.depth(node, root.right);
+      if (dist >= 0) return dist + 1;
+      return dist;
+    }
+  }
 }
 
 export default Tree;
