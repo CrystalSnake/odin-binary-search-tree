@@ -81,24 +81,23 @@ class Tree {
     }
   }
 
-  getCurrentLevel(level, node, result) {
+  getCurrentLevel(callback, level, node, result) {
     if (node == null) return;
     if (level == 1) {
-      result.push(node.data);
+      if (!callback) result.push(node.data);
+      else result.push(callback(node.data));
     } else if (level > 1) {
-      this.getCurrentLevel(level - 1, node.left, result);
-      this.getCurrentLevel(level - 1, node.right, result);
+      this.getCurrentLevel(callback, level - 1, node.left, result);
+      this.getCurrentLevel(callback, level - 1, node.right, result);
     }
   }
 
-  levelOrder(callback, node = this.root) {
-    const result = [];
+  levelOrder(callback, node = this.root, result = []) {
     const h = this.height(node);
     for (let i = 1; i <= h; i++) {
-      this.getCurrentLevel(i, node, result);
+      this.getCurrentLevel(callback, i, node, result);
     }
-    if (!callback) return result;
-    else return result.map(callback);
+    return result;
   }
 
   inorder(callback, node = this.root, result = []) {
