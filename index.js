@@ -29,3 +29,5 @@ console.log(`Inorder ${tree.inorder()}.`);
 console.log(`Inorder ${tree.inorder(double)}.`);
 console.log(`Preorder ${tree.preorder()}`);
 console.log(`Preorder ${tree.preorder(double)}`);
+console.log(`Postorder ${tree.postorder()}`);
+console.log(`Postorder ${tree.postorder(double)}`);

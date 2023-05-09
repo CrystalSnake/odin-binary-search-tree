@@ -118,6 +118,15 @@ class Tree {
     this.preorder(callback, node.right, result);
     return result;
   }
+
+  postorder(callback, node = this.root, result = []) {
+    if (node === null) return;
+    this.postorder(callback, node.left, result);
+    this.postorder(callback, node.right, result);
+    if (!callback) result.push(node.data);
+    else result.push(callback(node.data));
+    return result;
+  }
 }
 
 export default Tree;
