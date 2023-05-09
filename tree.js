@@ -104,11 +104,20 @@ class Tree {
   inorder(callback, node = this.root, result = []) {
     if (node) {
       this.inorder(callback, node.left, result);
-      result.push(node.data);
+      if (!callback) result.push(node.data);
+      else result.push(callback(node.data));
       this.inorder(callback, node.right, result);
     }
-    if (!callback) return result;
-    else return result.map(callback);
+    return result;
+  }
+
+  preorder(callback, node = this.root, result = []) {
+    if (node == null) return;
+    if (!callback) result.push(node.data);
+    else result.push(callback(node.data));
+    this.preorder(callback, node.left, result);
+    this.preorder(callback, node.right, result);
+    return result;
   }
 }
 
